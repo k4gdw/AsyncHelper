@@ -92,7 +92,6 @@ Public Class AsyncHelper
 
             Dim logger As Logger = LogManager.GetCurrentClassLogger
             logger.ErrorException(GetFormattedException(ex), ex)
-            logger = Nothing
         End Try
     End Sub
 
@@ -132,7 +131,6 @@ Public Class AsyncHelper
         End If
 
         Dim msg As String = sb.ToString
-        sb = Nothing
         Return msg
     End Function
 
