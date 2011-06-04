@@ -38,7 +38,7 @@ Public Class AsyncHelper
 		Friend ReadOnly Args As Object()
 	End Class
 
-	Private Shared dynamicInvokeShimCallback As New WaitCallback(AddressOf DynamicInvokeShim)
+    Private Shared ReadOnly dynamicInvokeShimCallback As New WaitCallback(AddressOf DynamicInvokeShim)
 
 	''' <summary>
 	''' This is the entry point to the class.  It takes a delegate pointing to the
