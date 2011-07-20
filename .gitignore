@@ -10,3 +10,4 @@ _ReSharper.*/
 Sync*.dat
 *.user
 *.docstates
+.vs10x
