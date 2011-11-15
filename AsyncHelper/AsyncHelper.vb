@@ -29,9 +29,9 @@ Public Class AsyncHelper
     ''' </para>
     ''' </remarks>
     Private Class TargetInfo
-        Friend Sub New(ByVal d As [Delegate], ByVal args__1 As Object())
+        Friend Sub New(ByVal d As [Delegate], ByVal arguments As Object())
             Target = d
-            Args = args__1
+            Args = arguments
         End Sub
 
         Friend ReadOnly Target As [Delegate]
@@ -114,22 +114,18 @@ Public Class AsyncHelper
     Private Shared Function GetFormattedException(ByRef ex As Exception,
      Optional ByVal isRecursive As Boolean = False) As String
         Dim sb As New StringBuilder
-
         If isRecursive Then
             sb.AppendFormat("*********************** Inner Exception ************************{0}", Environment.NewLine)
         Else
             sb.AppendFormat("************************* Exception ***************************{0}", Environment.NewLine)
         End If
-
         sb.AppendFormat("Exception Message:{0}{1}{2}", Environment.NewLine, ex.Message, Environment.NewLine)
         sb.AppendFormat("Stack Trace:{0}{1}{2}", Environment.NewLine, ex.StackTrace, Environment.NewLine)
         sb.AppendFormat("Source:{0}{1}{2}", Environment.NewLine, ex.Source, Environment.NewLine)
-
         ' recurse into inner exceptions
         If ex.InnerException IsNot Nothing Then
             sb.AppendFormat("{0}{1}", GetFormattedException(ex.InnerException, True), Environment.NewLine)
         End If
-
         Dim msg As String = sb.ToString
         Return msg
     End Function
