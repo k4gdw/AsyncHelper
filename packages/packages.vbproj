@@ -77,22 +77,26 @@
     <Folder Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NLog.2.0.0.0\NLog.2.0.0.0.nupkg" />
+    <None Include="NLog.2.0.0.2000\NLog.2.0.0.2000.nupkg" />
     <None Include="repositories.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NLog.2.0.0.0\lib\NET35\NLog.dll" />
-    <Content Include="NLog.2.0.0.0\lib\NET35\NLog.Extended.dll" />
-    <Content Include="NLog.2.0.0.0\lib\NET35\NLog.Extended.xml" />
-    <Content Include="NLog.2.0.0.0\lib\NET35\NLog.xml" />
-    <Content Include="NLog.2.0.0.0\lib\NET40\NLog.dll" />
-    <Content Include="NLog.2.0.0.0\lib\NET40\NLog.Extended.dll" />
-    <Content Include="NLog.2.0.0.0\lib\NET40\NLog.Extended.xml" />
-    <Content Include="NLog.2.0.0.0\lib\NET40\NLog.xml" />
-    <Content Include="NLog.2.0.0.0\lib\SL3\NLog.dll" />
-    <Content Include="NLog.2.0.0.0\lib\SL3\NLog.xml" />
-    <Content Include="NLog.2.0.0.0\lib\SL4\NLog.dll" />
-    <Content Include="NLog.2.0.0.0\lib\SL4\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\net20\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\net20\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\net35\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\net35\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\net40\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\net40\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\sl2\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\sl2\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\sl3-wp\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\sl3-wp\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\sl3\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\sl3\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\sl4-windowsphone71\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\sl4-windowsphone71\NLog.xml" />
+    <Content Include="NLog.2.0.0.2000\lib\sl4\NLog.dll" />
+    <Content Include="NLog.2.0.0.2000\lib\sl4\NLog.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data" />
