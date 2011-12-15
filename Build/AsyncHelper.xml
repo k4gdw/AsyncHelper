@@ -62,7 +62,7 @@
 		</ItemGroup>
 		
 		<!-- First copy the nuspec template files to the package dir -->
-		<Copy SourceFiles="$(BuildDir)AsyncHelper.nuspec" DestinationFolder="$(PackageDir)temp\" />
+		<Copy SourceFiles="$(BuildDir)K4GDW.Threading.AsyncHelper.nuspec" DestinationFolder="$(PackageDir)temp\" />
 		
 		<!-- Copy the source files to the package dir -->
 		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)temp\lib\%(RecursiveDir)" />

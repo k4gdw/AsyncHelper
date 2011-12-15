@@ -75,6 +75,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionInfo.vb">
+      <Link>SolutionInfo.vb</Link>
+    </Compile>
     <Compile Include="AsyncHelper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

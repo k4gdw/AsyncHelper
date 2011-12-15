@@ -3,6 +3,7 @@
 *.suo
 *.user
 *resharper.user
+[Tt]emp/
 .vs10x
 Sync*.dat
 [Bb]in/
