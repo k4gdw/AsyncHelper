@@ -9,7 +9,8 @@
     </SchemaVersion>
     <ProjectGuid>{F7DABCF1-00AB-4467-A7D7-FC86644B2D57}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>K4GDW.Threading</RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>AsyncHelper</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
