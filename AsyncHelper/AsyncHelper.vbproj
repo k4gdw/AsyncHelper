@@ -11,7 +11,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>
     </RootNamespace>
-    <AssemblyName>AsyncHelper</AssemblyName>
+    <AssemblyName>K4GDW.Threading.AsyncHelper</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -25,7 +25,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>AsyncHelper.xml</DocumentationFile>
+    <DocumentationFile>K4GDW.Threading.AsyncHelper.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -36,7 +36,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>AsyncHelper.xml</DocumentationFile>
+    <DocumentationFile>K4GDW.Threading.AsyncHelper.xml</DocumentationFile>
     <NoWarn>
     </NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
@@ -54,8 +54,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    <Reference Include="K4GDW.Infrastructure.Interfaces">
+      <HintPath>..\packages\K4GDW.Infrastructure.Interfaces.2.3.5.0\lib\net40\K4GDW.Infrastructure.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

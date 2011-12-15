@@ -1,5 +1,5 @@
 ﻿Imports System.Threading
-Imports NLog
+Imports K4GDW.Infrastructure.Logging
 Imports System.Text
 
 Namespace K4GDW.Threading
@@ -19,6 +19,8 @@ Namespace K4GDW.Threading
     ''' </para>
     ''' </remarks>
     Public Class AsyncHelper
+
+		Private Shared logger As ILogger
 
         ''' <summary>
         ''' A class to hold the target method delegate and the argument
@@ -58,9 +60,26 @@ Namespace K4GDW.Threading
         ''' <code>AsyncHelper.FireAndForget(delegate,param1,param2)</code>
         ''' </example>
         ''' </remarks>
-        Public Shared Sub FireAndForget(ByVal d As [Delegate], ByVal ParamArray args As Object())
-            ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
-        End Sub
+		Public Shared Sub FireAndForget(ByVal d As [Delegate], ByVal ParamArray args As Object())
+			ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
+		End Sub
+
+		''' <summary>
+		''' Fires the and forget.
+		''' </summary>
+		''' <param name="logService">The log service.</param>
+		''' <param name="d">The d.</param>
+		''' <param name="args">The args.</param>
+		''' <remarks>
+		''' <para>
+		''' Created:  12/15/2011 at 9:24 AM<br />
+		''' By:       bjohns
+		''' </para>
+		''' </remarks>
+		Public Shared Sub FireAndForget(logService As ILogger, d As [Delegate], ParamArray args As Object())
+			logger = logService
+			ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
+		End Sub
 
         ''' <summary>
         ''' A callback method to catch and log any exceptions to the
@@ -91,10 +110,12 @@ Namespace K4GDW.Threading
                 ti.Target.DynamicInvoke(ti.Args)
             Catch ex As Exception
                 ' log to the thread-safe NLog
-
-                Dim logger As Logger = LogManager.GetCurrentClassLogger
-                logger.ErrorException(GetFormattedException(ex), ex)
-            End Try
+				If logger IsNot Nothing Then
+					logger.Log(ILogger.Level.Error,
+							   GetFormattedException(ex),
+							   ex)
+				End If
+			End Try
         End Sub
 
         ''' <summary>

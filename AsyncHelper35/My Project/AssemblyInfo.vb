@@ -1,4 +1,5 @@
-﻿Imports System.Reflection
+﻿Imports System
+Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 ' General Information about an assembly is controlled through the following 
@@ -7,17 +8,18 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
+
+
 <Assembly: AssemblyTitle("K4GDW.Threading.AsyncHelper")> 
 <Assembly: AssemblyDescription("A class libary to handle asynchronous fire and forget.")> 
 <Assembly: AssemblyCompany("K4GDW")> 
 <Assembly: AssemblyProduct("K4GDW.Threading.AsyncHelper")> 
 <Assembly: AssemblyCopyright("Copyright © K4GDW 2011")> 
 <Assembly: AssemblyTrademark("K4GDW")> 
-
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("83492c31-9a7d-4627-aba3-0618ecc7df72")> 
+<Assembly: Guid("3515f3f3-7f42-4a91-b6b3-d257a410aea2")> 
 
 ' Version information for an assembly consists of the following four values:
 '

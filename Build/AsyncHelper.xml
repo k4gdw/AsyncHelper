@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+		 DefaultTargets="Deploy">
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+	<PropertyGroup>
+	    <BaseDir>$(MSBuildProjectDirectory)\..\</BaseDir>
+	    <BuildDir>$(MSBuildProjectDirectory)\</BuildDir>
+	    <CodeDrop>$(BaseDir)CodeDrop\</CodeDrop>
+	    <PackageDir>$(BuildDir)package\</PackageDir>
+	    <NuGet>c:\devTools\</NuGet>
+  	</PropertyGroup>
+	<Target Name="Clean">
+		<ItemGroup>
+			<BinFiles Include="$(BaseDir)AsyncHelper\bin\Release\" />
+			<BinFiles Include="$(BaseDir)AsyncHelper35\bin\Release\" />
+			<BinFiles Include="$(CodeDrop)AsyncHelper\" />
+			<BinFiles Include="$(Package)temp\" />
+		</ItemGroup>
+		<RemoveDir Directories="@(BinFiles)" />
+	</Target>
+	<Target Name="Compile35">
+		<MSBuild Projects="$(BaseDir)AsyncHelper35\AsyncHelper35.vbproj"
+				 Properties="Platform=AnyCPU;Configuration=Release" />
+	</Target>
+	<Target Name="Compile40">
+		<MSBuild Projects="$(BaseDir)AsyncHelper\AsyncHelper.vbproj"
+				 Properties="Platform=AnyCPU;Configuration=Release" />
+	</Target>
+	<Target Name="Deploy35"
+			DependsOnTargets="Compile35">
+		<ItemGroup>
+			<!-- Build Artifacts -->
+			<InstallFiles Include="$(BaseDir)AsyncHelper35\bin\Release\K*.AsyncHelper.dll" />
+		</ItemGroup>
+		<MakeDir Directories="$(BaseDir)CodeDrop"
+				 Condition="!Exists('$(BaseDir)CodeDrop')" />
+		<MakeDir Directories="$(CodeDrop)AsyncHelper"
+				 Condition="!Exists('$(CodeDrop)AsyncHelper')" />
+		<MakeDir Directories="$(CodeDrop)AsyncHelper\net35"
+				 Condition="!Exists('$(CodeDrop)AsyncHelper\net35')" />
+		<Copy SourceFiles="@(InstallFiles)"
+			  DestinationFolder="$(CodeDrop)AsyncHelper\net35" />		
+	</Target>
+	<Target Name="Deploy40"
+			DependsOnTargets="Compile40">
+		<ItemGroup>
+			<!-- Build Artifacts -->
+			<InstallFiles Include="$(BaseDir)AsyncHelper\bin\Release\K*.AsyncHelper.dll" />
+		</ItemGroup>
+		<MakeDir Directories="$(BaseDir)CodeDrop"
+				 Condition="!Exists('$(BaseDir)CodeDrop')" />
+		<MakeDir Directories="$(CodeDrop)AsyncHelper"
+				 Condition="!Exists('$(CodeDrop)AsyncHelper')" />
+		<MakeDir Directories="$(CodeDrop)AsyncHelper\net40"
+				 Condition="!Exists('$(CodeDrop)AsyncHelper\net40')" />
+		<Copy SourceFiles="@(InstallFiles)"
+			  DestinationFolder="$(CodeDrop)AsyncHelper\net40" />	
+	</Target>
+	<Target Name="Package">
+		<ItemGroup>
+			<MainBinaries Include="$(CodeDrop)AsyncHelper\**\*.*" />		
+		</ItemGroup>
+		
+		<!-- First copy the nuspec template files to the package dir -->
+		<Copy SourceFiles="$(BuildDir)AsyncHelper.nuspec" DestinationFolder="$(PackageDir)temp\" />
+		
+		<!-- Copy the source files to the package dir -->
+		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)temp\lib\%(RecursiveDir)" />
+		
+		
+		<!-- Get the version number of the main FV assembly to insert into the nuspec files -->
+		<GetAssemblyIdentity AssemblyFiles="$(CodeDrop)AsyncHelper\net40\K4GDW.Threading.AsyncHelper.dll">
+			<Output TaskParameter="Assemblies" ItemName="AsmInfo" />
+		</GetAssemblyIdentity>
+		
+		<!-- insert the version number into the nuspec files -->
+		<XmlUpdate
+			Namespace="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd"
+			Prefix="n"
+			XmlFileName="$(PackageDir)temp\K4GDW.Threading.AsyncHelper.nuspec"
+			Xpath="/n:package/n:metadata/n:version"
+			Value="%(AsmInfo.Version)" />
+
+		<Exec Command="$(NuGet)nuget update -self" />
+		   	 
+		<Exec WorkingDirectory="$(PackageDir)" 
+		      Command="$(NuGet)nuget pack $(PackageDir)temp\K4GDW.Threading.AsyncHelper.nuspec" />
+	</Target>
+	<Target Name="Deploy"
+			DependsOnTargets="Clean;Deploy35;Deploy40">
+	</Target>
+</Project>
+
