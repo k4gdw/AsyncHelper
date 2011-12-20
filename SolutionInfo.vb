@@ -15,4 +15,4 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTrademark("K4GDW")> 
 <Assembly: ComVisible(False)>
 <Assembly: AssemblyVersion("1.1.*")> 
-<Assembly: AssemblyFileVersion("1.1.1")> 
+<Assembly: AssemblyFileVersion("1.1")> 

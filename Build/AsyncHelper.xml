@@ -13,7 +13,8 @@
 		<ItemGroup>
 			<BinFiles Include="$(BaseDir)AsyncHelper\bin\Release\" />
 			<BinFiles Include="$(BaseDir)AsyncHelper35\bin\Release\" />
-			<BinFiles Include="$(CodeDrop)AsyncHelper\" />
+			<BinFiles Include="$(CodeDrop)AsyncHelper\net40\" />
+			<BinFiles Include="$(CodeDrop)AsyncHelper\net35\" />
 			<BinFiles Include="$(Package)temp\" />
 		</ItemGroup>
 		<RemoveDir Directories="@(BinFiles)" />
