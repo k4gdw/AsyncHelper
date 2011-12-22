@@ -7,7 +7,7 @@
 	    <BuildDir>$(MSBuildProjectDirectory)\</BuildDir>
 	    <CodeDrop>$(BaseDir)CodeDrop\</CodeDrop>
 	    <PackageDir>$(BuildDir)package\</PackageDir>
-	    <NuGet>c:\devTools\</NuGet>
+	    <NuGet>$(BaseDir).nuget\</NuGet>
   	</PropertyGroup>
 	<Target Name="Clean">
 		<ItemGroup>
