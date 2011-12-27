@@ -54,8 +54,17 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="K4GDW.Infrastructure.Interfaces">
-      <HintPath>..\packages\K4GDW.Infrastructure.Interfaces.2.3.5.0\lib\net40\K4GDW.Infrastructure.Interfaces.dll</HintPath>
+    <Reference Include="K4GDW.Infrastructure.Interfaces, Version=2.3.4378.17246, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\K4GDW.Infrastructure.Interfaces.2.3.4378.17246\lib\net40\K4GDW.Infrastructure.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="K4GDW.Infrastructure.Logging.NLogger, Version=2.3.4378.17248, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\K4GDW.Infrastructure.Logging.NLog.2.3.4378.17248\lib\net40\K4GDW.Infrastructure.Logging.NLogger.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -113,6 +122,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="NLog.config\NLog.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -20,7 +20,7 @@ Namespace K4GDW.Threading
     ''' </remarks>
     Public Class AsyncHelper
 
-		Private Shared logger As ILogger
+        Private Shared _logger As ILogger
 
         ''' <summary>
         ''' A class to hold the target method delegate and the argument
@@ -42,7 +42,7 @@ Namespace K4GDW.Threading
             Friend ReadOnly Args As Object()
         End Class
 
-        Private Shared ReadOnly dynamicInvokeShimCallback As New WaitCallback(AddressOf DynamicInvokeShim)
+        Private Shared ReadOnly DynamicInvokeShimCallback As New WaitCallback(AddressOf DynamicInvokeShim)
 
         ''' <summary>
         ''' This is the entry point to the class.  It takes a delegate pointing to the
@@ -56,33 +56,33 @@ Namespace K4GDW.Threading
         ''' On:  1/27/2011 at 1:56 PM
         ''' </para>
         ''' <example>
-		''' <code>AsyncHelper.FireAndForget(delegate,param1,param2)</code>
+        ''' <code>AsyncHelper.FireAndForget(delegate,param1,param2)</code>
         ''' </example>
         ''' </remarks>
-		Public Shared Sub FireAndForget(ByVal d As [Delegate], ByVal ParamArray args As Object())
-			ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
-		End Sub
+        Public Shared Sub FireAndForget(ByVal d As [Delegate], ByVal ParamArray args As Object())
+            ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
+        End Sub
 
-		''' <summary>
-		''' This is the entry point to the class.  It takes a delegate pointing to the
-		''' method to be executed in the background thread.
-		''' </summary>
-		''' <param name="logService">A reference to a class that implements <see cref="K4GDW.Infrastructure.Logging.ILogger" />.</param>
-		''' <param name="d">A delegate for the target method to be executed.</param>
-		''' <param name="args">An array of objects holding the parameters of the target method.</param>
-		''' <remarks>
-		''' <example>
-		''' <code>AsyncHelper.FireAndForget(delegate,param1,param2)</code>
-		''' </example>
-		''' <para>
-		''' Created:  12/15/2011 at 9:24 AM<br />
-		''' By:       bjohns
-		''' </para>
-		''' </remarks>
-		Public Shared Sub FireAndForget(logService As ILogger, d As [Delegate], ParamArray args As Object())
-			logger = logService
-			ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
-		End Sub
+        ''' <summary>
+        ''' This is the entry point to the class.  It takes a delegate pointing to the
+        ''' method to be executed in the background thread.
+        ''' </summary>
+        ''' <param name="logService">A reference to a class that implements <see cref="K4GDW.Infrastructure.Logging.ILogger" />.</param>
+        ''' <param name="d">A delegate for the target method to be executed.</param>
+        ''' <param name="args">An array of objects holding the parameters of the target method.</param>
+        ''' <remarks>
+        ''' <example>
+        ''' <code>AsyncHelper.FireAndForget(delegate,param1,param2)</code>
+        ''' </example>
+        ''' <para>
+        ''' Created:  12/15/2011 at 9:24 AM<br />
+        ''' By:       bjohns
+        ''' </para>
+        ''' </remarks>
+        Public Shared Sub FireAndForget(logService As ILogger, d As [Delegate], ParamArray args As Object())
+            _logger = logService
+            ThreadPool.QueueUserWorkItem(dynamicInvokeShimCallback, New TargetInfo(d, args))
+        End Sub
 
         ''' <summary>
         ''' A callback method to catch and log any exceptions to the
@@ -100,7 +100,7 @@ Namespace K4GDW.Threading
         ''' This class now depends on NLog to handle reporting of exceptions that occur
         ''' in the background thread.  Since this is an implementation of the "Fire and Forget"
         ''' pattern, a thread-safe method of reporting exceptions is required.  The best way
-		''' to accomplish this, especially in a production web environment, is via NLog or a
+        ''' to accomplish this, especially in a production web environment, is via NLog or a
         ''' similar tread-safe library.  The <see cref="System.Diagnostics.EventLogTraceListener" />
         ''' would work but it requires extra setup and permissions to record to the event log.
         ''' NLog is a more reliable and flexible system since it can log to a database, email,
@@ -113,12 +113,12 @@ Namespace K4GDW.Threading
                 ti.Target.DynamicInvoke(ti.Args)
             Catch ex As Exception
                 ' log to the thread-safe NLog
-				If logger IsNot Nothing Then
-					logger.Log(ILogger.Level.Error,
-							   GetFormattedException(ex),
-							   ex)
-				End If
-			End Try
+                If _logger IsNot Nothing Then
+                    _logger.Log(ILogger.Level.Error,
+                      GetFormattedException(ex),
+                      ex)
+                End If
+            End Try
         End Sub
 
         ''' <summary>
