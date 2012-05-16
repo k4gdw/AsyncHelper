@@ -1,3 +1,5 @@
+[Pp]ackages/*
+!repositories.config
 *.docstates
 *.sln.cache
 *.suo
@@ -9,6 +11,4 @@ Sync*.dat
 [Bb]in/
 [Cc]ode[Dd]rop/
 [Oo]bj/
-[Pp]ackages/*
-!repositories.config
 _ReSharper.*/
