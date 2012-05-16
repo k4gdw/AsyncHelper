@@ -8,9 +8,7 @@
 Sync*.dat
 [Bb]in/
 [Cc]ode[Dd]rop/
-[Dd]ebug/
 [Oo]bj/
 [Pp]ackages/*
 !repositories.config
-[Rr]elease/
 _ReSharper.*/
