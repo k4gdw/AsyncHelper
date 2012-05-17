@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>K4GDW.Threading.AsyncHelper</id>
-    <version></version>
+    <version>$version$</version>
     <title>K4GDW.Threading.AsyncHelper</title>
     <authors>Bryan Johns</authors>
     <owners>Bryan Johns</owners>
