@@ -14,4 +14,4 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyCopyright("Copyright © K4GDW 2011")> 
 <Assembly: AssemblyTrademark("K4GDW")> 
 <Assembly: ComVisible(False)>
-<Assembly: AssemblyVersion("1.1.*")> 
+<Assembly: AssemblyVersion("1.2.0")> 
